@@ -1,4 +1,4 @@
-var _ = require('lodash')
+const _ = require('lodash')
 
 /**
  * Attribute Processor Plugin
@@ -8,19 +8,18 @@ var _ = require('lodash')
  * value is set on a model.
  */
 module.exports = function processorPlugin(bookshelf) {
-  var proto = bookshelf.Model.prototype
+  const proto = bookshelf.Model.prototype
 
   bookshelf.Model = bookshelf.Model.extend({
-    set: function(key, value, options) {
-      var processedKey
-      var self = this
+    set(key, value, options) {
+      let processedKey
 
       if (!key) return this
 
       if (this.processors) {
         if (typeof key === 'object') {
-          processedKey = _.transform(key, function(result, value, key) {
-            result[key] = self.processAttribute(key, value)
+          processedKey = _.transform(key, (result, value, key) => {
+            result[key] = this.processAttribute(key, value)
           })
 
           return proto.set.call(this, processedKey, value, options)
@@ -57,14 +56,14 @@ module.exports = function processorPlugin(bookshelf) {
      * @param {string} key The attribute name key.
      * @return {mixed} The transformed value.
      */
-    processAttribute: function processAttribute(key, value) {
-      var processes
+    processAttribute(key, value) {
+      let processes
 
       if (this.processors && this.processors[key]) processes = this.processors[key]
       if (!processes) return value
       if (!Array.isArray(processes)) processes = [processes]
 
-      processes.forEach(function(process) {
+      processes.forEach(process => {
         value = process(value)
       })
 
