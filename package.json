@@ -1,0 +1,72 @@
+{
+  "name": "bookshelf-case-converter-plugin",
+  "version": "0.1.0",
+  "description": "A plugin for Bookshelf that converts between the database's snake_cased and a model's camelCased properties automatically.",
+  "main": "index.js",
+  "scripts": {
+    "lint:fix": "prettier --write 'index.js' 'test/**/*.js'",
+    "lint": "eslint index.js test/",
+    "pretest": "npm run lint",
+    "test": "nyc mocha --check-leaks -t 10000"
+  },
+  "homepage": "https://github.com/bookshelf/case-converter-plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bookshelf/case-converter-plugin.git"
+  },
+  "keywords": [
+    "orm",
+    "plugin",
+    "bookshelf"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "test/*"
+    ],
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
+  },
+  "devDependencies": {
+    "bookshelf": "^0.15.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.2",
+    "knex": "^0.19.1",
+    "lint-staged": "^9.2.1",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "sinon": "^7.4.0",
+    "sqlite3": "^4.0.9"
+  },
+  "author": {
+    "name": "Kristóf Poduszló"
+  },
+  "contributors": [
+    {
+      "name": "Ricardo Graça",
+      "url": "https://github.com/ricardograca"
+    }
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.16.0"
+  }
+}
