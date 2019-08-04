@@ -19,9 +19,7 @@
     "plugin",
     "bookshelf"
   ],
-  "dependencies": {
-    "lodash": "^4.17.15"
-  },
+  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

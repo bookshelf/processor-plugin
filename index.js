@@ -1,5 +1,3 @@
-const _ = require('lodash')
-
 /**
  * Attribute Processor Plugin
  *
@@ -12,17 +10,17 @@ module.exports = function processorPlugin(bookshelf) {
 
   bookshelf.Model = bookshelf.Model.extend({
     set(key, value, options) {
-      let processedKey
-
       if (!key) return this
 
       if (this.processors) {
         if (typeof key === 'object') {
-          processedKey = _.transform(key, (result, value, key) => {
-            result[key] = this.processAttribute(key, value)
-          })
+          const processedAttributes = {}
 
-          return proto.set.call(this, processedKey, value, options)
+          for (const attributeName in key) {
+            processedAttributes[attributeName] = this.processAttribute(attributeName, key[attributeName])
+          }
+
+          return proto.set.call(this, processedAttributes, value, options)
         }
 
         value = this.processAttribute(key, value)
