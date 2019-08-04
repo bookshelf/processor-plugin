@@ -1,5 +1,6 @@
 const { equal, throws } = require('assert')
 const knex = require('knex')
+const sinon = require('sinon')
 const db = knex({ client: 'sqlite3', connection: ':memory:', useNullAsDefault: true })
 const bookshelf = require('bookshelf')(db)
 const processor = require('..')
@@ -96,6 +97,17 @@ describe('Processor Plugin', function() {
       var otherUser = new OtherUser().set('username', 'TesT')
 
       equal(otherUser.get('username'), 'TesT_custom')
+    })
+
+    it('does nothing if not passing a key name', function() {
+      const spiedProcess = sinon.spy(bookshelf.Model.prototype, 'processAttribute')
+      const OtherUser = User.extend({
+        processors: { username: lowerCaseProcessor }
+      })
+      new OtherUser().set()
+      spiedProcess.restore()
+
+      equal(spiedProcess.called, false)
     })
   })
 })
