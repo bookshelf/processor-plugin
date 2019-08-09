@@ -11,7 +11,7 @@ First install the package:
 
     npm install bookshelf-processor-plugin
 
-Then load the plugin using `bookshelf.plugin('bookshelf-processor-plugin')`. Now you are all set to start definining
+Then load the plugin using `bookshelf.plugin('bookshelf-processor-plugin')`. Now you are all set to start defining
 custom attribute processors on your models.
 
 For more information check the online
