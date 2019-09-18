@@ -62,7 +62,7 @@ module.exports = function processorPlugin(bookshelf) {
       if (!Array.isArray(processes)) processes = [processes]
 
       processes.forEach(process => {
-        value = process(value)
+        value = process.call(this, value)
       })
 
       return value
