@@ -1,6 +1,6 @@
 # Bookshelf Processor Plugin
 
-[![Build Status](https://travis-ci.com/bookshelf/processor-plugin.svg?branch=master)](https://travis-ci.com/bookshelf/processor-plugin)
+[![Build Status](https://travis-ci.com/bookshelf/processor-plugin.svg?branch=master)](https://travis-ci.com/bookshelf/processor-plugin) [![Greenkeeper badge](https://badges.greenkeeper.io/bookshelf/processor-plugin.svg)](https://greenkeeper.io/)
 
 This is a plugin for the [Bookshelf Node.js ORM](https://bookshelfjs.org/) that allows defining custom processor
 functions that handle transformation of values whenever they are `.set()` on a model.
