@@ -93,5 +93,18 @@ describe('Processor Plugin', function() {
 
       equal(spiedProcess.called, false)
     })
+
+    it('passes the model context as "this" to each processor', function() {
+      const OtherUser = User.extend({
+        processors: {
+          username(value) {
+            return this.get('id') + value
+          }
+        }
+      })
+      const otherUser = new OtherUser({ id: 1 }).set('username', 'test')
+
+      equal(otherUser.get('username'), '1test')
+    })
   })
 })
