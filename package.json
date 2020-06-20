@@ -1,6 +1,6 @@
 {
   "name": "bookshelf-processor-plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A plugin for Bookshelf that allows defining custom processor functions that transform model attributes.",
   "main": "index.js",
   "scripts": {
