@@ -46,7 +46,7 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^4.0.2",
-    "knex": "^0.20.0",
+    "knex": "^0.21.0",
     "lint-staged": "^10.0.3",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
